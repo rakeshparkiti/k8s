@@ -14,8 +14,8 @@ spec:
           - git:
               repoURL: "https://github.com/rakeshparkiti/k8s.git"
               revision: main
-              directory:
-                - path: apps/nginx/namespace
+              directories:
+                - path: apps/nginx/namespace/*
           - list:
               elements: []
   template:
