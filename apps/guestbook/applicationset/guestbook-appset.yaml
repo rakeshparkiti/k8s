@@ -15,7 +15,7 @@ spec:
               repoURL: "https://github.com/rakeshparkiti/k8s.git"
               revision: main
               directories:
-                - path: apps/guestbook/namespace/*
+                - path: apps/guestbook/*
           - list:
               elements: []
   template:
