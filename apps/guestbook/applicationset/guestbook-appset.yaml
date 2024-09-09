@@ -32,7 +32,7 @@ spec:
       source:
         repoURL: "https://github.com/rakeshparkiti/k8s.git"
         targetRevision: main
-        path: "apps/guestbook/chart"
+        path: "apps/guestbook/guestbook-chart"
       destination:
         name: in-cluster
         namespace: guestbook

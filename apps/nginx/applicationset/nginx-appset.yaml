@@ -32,7 +32,7 @@ spec:
       source:
         repoURL: "https://github.com/rakeshparkiti/k8s.git"
         targetRevision: main
-        path: "apps/nginx/chart"
+        path: "apps/nginx/nginx-chart"
       destination:
         name: in-cluster
         namespace: nginx
