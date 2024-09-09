@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: root-apps
+spec:
+  kustomizeBuildOptions: "--enable-helm"
+  # The project the application belongs to
+  project: default
+  # Source of the application manifests
+  syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  source:
+    repoURL: "https://github.com/rakeshparkiti/k8s.git"
+    path: templates
+    targetRevision: main
+  destination:
+    namespace: argocd
+    name: in-cluster
+  info:
+    - name: root-apps
+      value: App_of_Apps

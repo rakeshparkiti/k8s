@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: nginx-appset
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: "https://github.com/rakeshparkiti/k8s.git"
+              revision: main
+              directory:
+                - path: apps/nginx/namespace
+          - list:
+              elements: []
+  template:
+    metadata:
+      name: nginx-appset
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+      source:
+        repoURL: "https://github.com/rakeshparkiti/k8s.git"
+        targetRevision: main
+        path: "apps/nginx/chart"
+      destination:
+        name: in-cluster
+        namespace: nginx
