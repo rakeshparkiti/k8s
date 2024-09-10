@@ -9,15 +9,8 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - matrix:
-        generators:
-          - git:
-              repoURL: "https://github.com/rakeshparkiti/k8s.git"
-              revision: main
-              files:
-                - path: apps/guestbook/chart/values.yaml
-          - list:
-              elements: []
+    - list:
+        elements: []
   template:
     metadata:
       name: guestbook-appset
